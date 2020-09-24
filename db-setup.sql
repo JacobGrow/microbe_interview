@@ -1,0 +1,8 @@
+-- CREATE TABLE contacts (
+--     id int NOT NULL AUTO_INCREMENT,
+--     name VARCHAR(255) NOT NULL,
+--     role VARCHAR(255) NOT NULL,
+--     email VARCHAR(255) NOT NULL,
+--     phone VARCHAR(20) NOT NULL,  
+--     PRIMARY KEY (id)
+-- );
