@@ -2,6 +2,7 @@ const Sequelize = require('sequelize');
 const db = require('../config/database');
 
 const Contact = db.define('contact', {
+  
   name: {
     type: Sequelize.STRING
   },
@@ -13,7 +14,9 @@ const Contact = db.define('contact', {
   },
   phone: {
     type: Sequelize.STRING
-  },
-})
+  }
+},
+
+{timestamps: false});
 
 module.exports = Contact;

@@ -18,9 +18,10 @@ db.authenticate()
 
 app.use(express.json());
 
-// app.use('/api/contacts', apiRouter)
+//Contact routes
+app.use('/contacts', require('./routes/contacts'));
 
-app.get('/', (req, res) => res.send('PLS WORK'));
+// app.get('/', (req, res) => res.send('PLS WORK'));
 
 
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`)

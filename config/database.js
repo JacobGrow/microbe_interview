@@ -1,7 +1,7 @@
-const sequelize = require('sequelize');
+const Sequelize = require('sequelize');
 const PORT = process.env.PORT || 5000;
 
-module.exports = new sequelize('micaddressbook', 'micaddressbook', 'Yq8rAun?w-Uz', {
+module.exports = new Sequelize('micaddressbook', 'micaddressbook', 'Yq8rAun?w-Uz', {
   host: "den1.mysql4.gear.host",
   dialect: 'mysql',
   
