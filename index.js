@@ -1,8 +1,9 @@
 // ----- Begin your project below! -----
 const express = require('express');
-// const apiRouter = require('./routes')
-const app = express();
 const PORT = process.env.PORT || 5000;
+const exphbs = require('express-handlebars');
+
+
 
 //Database
 const db = require('./config/database')
@@ -12,9 +13,14 @@ const db = require('./config/database')
 //Test DB
 
 db.authenticate()
-    .then(() => console.log('Database Connected...'))
-    .catch(err => console.log('Error:' + err))
+.then(() => console.log('Database Connected...'))
+.catch(err => console.log('Error:' + err))
 
+const app = express();
+
+//Handlebars
+app.engine('handlebars', exphbs({ defaultLayout: 'main'}))
+app.set('view engine', 'handlebars')
 
 app.use(express.json());
 

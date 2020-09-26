@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <title>Address Book</title>
+</head>
+<header class="text-center">
+  <div class="card mx-3 mt-1">
+    <h1 class="mt-2 border-bottom">Address Book</h1>
+  </div>
+</header>
+<body class="bg-dark">
+  <div class="container-fluid mt-2">
+    <div class="row justify-content-center">
+      <div class="col-6 text-center">
+        <div class="card mx-1 mt-1 text-center">
+          <h1 class="text-center ml-1">Add A Contact</h1>
+          <form action="submit" class="border-bottom ml-2 my-2">
+            <input class="form-control shadow mt-1 mw-100" type="text" placeholder="Name">
+            <input type="text" class="form-control shadow mt-1" placeholder="Role">
+            <input type="text" class="form-control shadow mt-1" placeholder="Email">
+            <input type="text" class="form-control shadow mt-1" placeholder="Phone">
+            <button class="btn btn-dark my-2">
+              Submit
+            </button>
+          </form>
+
+        </div>
+     <div class="row">
+       <div class="col" id="contacts">
+{{{body}}}
+        </div>
+      </div>
+          
+        </div>
+      </div>
+    </div>
+    
+  <script src="index.js" type="module"></script>
+</body>
+</html>

@@ -15,8 +15,12 @@ const Contact = db.define('contact', {
   phone: {
     type: Sequelize.STRING
   }
+
 },
 
-{timestamps: false});
+{timestamps: false}
+
+);
+
 
 module.exports = Contact;
