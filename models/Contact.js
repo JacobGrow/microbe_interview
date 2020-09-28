@@ -23,4 +23,5 @@ const Contact = db.define('contact', {
 );
 
 
+
 module.exports = Contact;

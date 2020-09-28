@@ -102,10 +102,6 @@ const Mutation = new GraphQLObjectType({
           });
         }
       },
-      updateContact: {
-        type: Contact,
-        
-      }
     };
   },
 });

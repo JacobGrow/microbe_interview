@@ -5,21 +5,59 @@
 {{#each contacts}}
 
 
+
+
 <div class="card shadow">
-<h2>{{this.name}}</h2>
+<a href="/contacts/{{id}}">
+<h1>{{this.name}}</h1>
+</a>
 <h5>{{this.role}}</h5>
 <h5>{{this.phone}}</h5>
 <h5>{{this.email}}</h5>
 <div class="row">
   <div class="col">
-<i class="fa fa-trash fa-lg mb-2" aria-hidden="true"></i>
+    <form action="/contacts/delete/{{id}}?_method=DELETE" method="POST">
+<button type="submit" class="btn btn-danger">Delete</button>
+    </form>
   </div>
   <div class="col">
-<i class="fa fa-pencil fa-lg" aria-hidden="true"></i>
+
+<button class="btn btn-info" type="button" data-toggle="modal" data-target="#updateModal">Update</button>
   </div>
 </div>
 {{else}}
   <p>You havent added any contacts</p>
   {{/each}}
+  
+
+  <div class="modal fade" id="updateModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="title" id="exampleModalLongTitle">Edit Contact?</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+         <form action="/contacts/edit/{{id}}?_method=PUT" method="POST" class="border-bottom ml-2 my-2">
+            <input class="form-control shadow mt-1 mw-100" type="text" placeholder="Name" id="name" name="name" value={{this.name}}>
+            <input type="text" class="form-control shadow mt-1" placeholder="Role" name="role" id="role" value={{this.role}}>
+            <input type="text" class="form-control shadow mt-1" placeholder="Email" name="email" id="email" value={{this.email}}>
+            <input type="text" class="form-control shadow mt-1" placeholder="Phone" name="phone" id="phone" value={{this.phone}}>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="submit" class="btn btn-primary">Save changes</button>
+          </form>
+      </div>
+     
+      
+    </div>
+  </div>
+</div>
 </div>
 </section>
+
+
+
+
+

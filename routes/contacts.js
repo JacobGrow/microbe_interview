@@ -12,16 +12,26 @@ Contact.findAll()
   })
   .catch(err => console.log(err)));
 
-router.get('/:id', (req, res) => 
-Contact.findOne({
-  where: {
-    id: req.params.id
-  }
+
+  //GetByID
+router.get('/:id', (req, res) => {
+  Contact.findAll({
+    where: {
+      id: req.params.id
+    }
+  })
+  .then(contacts => {
+    res.render('contacts', {contacts})
+  })
+  .catch(err => console.log(err))
 })
-  .then(contacts => console.log("It WOrked"))
-.catch(err => console.log(err)));
 
 
+
+
+
+
+//CREATE
 router.post('/add', (req, res) => {
 
 let { name, role, email, phone } = req.body
@@ -43,7 +53,6 @@ if(!phone){
 
 // Error Check
 if(errors.length > 0){
-  console.log("WHY")
   res.render('add', {
     errors,
     name,
@@ -68,16 +77,17 @@ else{
 });
 
 //Delete
-router.delete('/delete/:id', (req, res) => {
-  Contact.destroy({
-    where: {
-      id: req.params.id
-    }
-  })
- 
-  .then(() => res.send("Successfully deleted."))
-  .catch(err => console.log(err))
-});
+  router.delete('/delete/:id', (req, res) => {
+    Contact.destroy({
+      where: {
+        id: req.params.id
+      }
+    })
+    // .then(() => res.send("Successfully deleted."))
+    .then(() => res.redirect('/contacts'))
+    .catch(err => console.log(err))
+  });
+
 
 //Update
 router.put('/edit/:id', (req, res) => {
@@ -96,5 +106,10 @@ router.put('/edit/:id', (req, res) => {
   .catch(err => console.log(err));
 })
 
+
+
+function validId(id){
+  return !isNaN(id)
+}
 
 module.exports = router;

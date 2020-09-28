@@ -1,5 +1,6 @@
 // ----- Begin your project below! -----
 var { graphqlHTTP } = require('express-graphql');
+var methodOverride = require('method-override')
 const Schema = require('./schema')
 const express = require('express');
 const PORT = process.env.PORT || 5000;
@@ -33,6 +34,8 @@ app.set('view engine', 'handlebars')
 app.use(express.urlencoded({extended: false}));
 app.use(express.json());
 
+//Method Override
+app.use(methodOverride('_method'))
 
 //GraphQL
 app.use('/graphql', graphqlHTTP({
@@ -50,3 +53,5 @@ app.use('/contacts', require('./routes/contacts'));
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`)
 
 )
+
+
