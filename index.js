@@ -3,7 +3,7 @@ var { graphqlHTTP } = require('express-graphql');
 var methodOverride = require('method-override')
 const Schema = require('./schema')
 const express = require('express');
-const PORT = process.env.PORT || 5000;
+const PORT = process.env.PORT || 3000;
 const exphbs = require('express-handlebars');
 
 
