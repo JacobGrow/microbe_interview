@@ -19,9 +19,16 @@ db.authenticate()
 const app = express();
 
 //Handlebars
-app.engine('handlebars', exphbs({ defaultLayout: 'main'}))
+app.engine('handlebars', exphbs({ defaultLayout: 'main',
+  runtimeOptions: {
+    allowProtoPropertiesByDefault: true,
+    allowProtoMethodsByDefault: true,
+  }}));
+
 app.set('view engine', 'handlebars')
 
+// Body Parser
+app.use(express.urlencoded({extended: false}));
 app.use(express.json());
 
 //Contact routes

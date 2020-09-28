@@ -24,25 +24,62 @@ Contact.findOne({
 
 // Create
 
-router.get('/add', (req, res) => {
-const data = {
-  name: 'David Lee Roth',
-  role: "Frontman",
-  email: 'DLH@5150.com',
-  phone: '208-123-1978'
+// router.post('/add', (req, res) => {
+//   let {name, role, email, phone } = req.body;
+//   Contact.create({
+//     name: name,
+//     role: role,
+//     email: email,
+//     phone: phone
+//   })
+//   .then(contacts => {
+//     res.redirect('/contacts')
+//   })
+//   .catch(err => console.log(err))
+// })
+router.post('/add', (req, res) => {
+
+let { name, role, email, phone } = req.body
+let errors = [];
+
+// Field Validation
+if(!name){
+  errors.push({ text: 'Please add a name'});
+}
+if(!role){
+  errors.push({ text: 'Please add a role'});
+}
+if(!email){
+  errors.push({ text: 'Please add a email'});
+}
+if(!phone){
+  errors.push({ text: 'Please add a phone number'});
 }
 
-let { name, role, email, phone } = data
+// Error Check
+if(errors.length > 0){
+  console.log("WHY")
+  res.render('add', {
+    errors,
+    name,
+    role,
+    email,
+    phone
+  });
 
-//Insert into table
-Contact.create({
-  name,
-  role,
-  email,
-  phone
-})
-.then(contact => res.redirect('/contacts'))
-.catch(err => console.log(err));
+}
+else{
+  //Insert into table
+  Contact.create({
+    name,
+    role,
+    email,
+    phone
+  })
+  .then(contact => res.redirect('/contacts'))
+  .catch(err => console.log(err));
+}
+
 });
 
 module.exports = router;

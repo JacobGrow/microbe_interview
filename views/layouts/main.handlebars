@@ -15,21 +15,25 @@
   <div class="container-fluid mt-2">
     <div class="row justify-content-center">
       <div class="col-6 text-center">
-        <div class="card mx-1 mt-1 text-center">
+        <div class="card mx-1 mt-1 text-center" id="add">
           <h1 class="text-center ml-1">Add A Contact</h1>
-          <form action="submit" class="border-bottom ml-2 my-2">
-            <input class="form-control shadow mt-1 mw-100" type="text" placeholder="Name">
-            <input type="text" class="form-control shadow mt-1" placeholder="Role">
-            <input type="text" class="form-control shadow mt-1" placeholder="Email">
-            <input type="text" class="form-control shadow mt-1" placeholder="Phone">
-            <button class="btn btn-dark my-2">
+          {{#each errors}}
+          <div>
+            <p class="text-warning">{{text}}</p>
+          </div>
+          {{/each}}
+          <form action="/contacts/add" method="POST" class="border-bottom ml-2 my-2">
+            <input class="form-control shadow mt-1 mw-100" type="text" placeholder="Name" id="name" name="name" value={{this.name}}>
+            <input type="text" class="form-control shadow mt-1" placeholder="Role" name="role" id="role"value={{this.role}}>
+            <input type="text" class="form-control shadow mt-1" placeholder="Email" name="email" id="email" value={{this.email}}>
+            <input type="text" class="form-control shadow mt-1" placeholder="Phone" name="phone" id="phone" value={{this.phone}}>
+            <button class="btn btn-dark my-2" type="submit">
               Submit
             </button>
           </form>
-
         </div>
      <div class="row">
-       <div class="col" id="contacts">
+       <div class="col-12" id="contacts">
 {{{body}}}
         </div>
       </div>

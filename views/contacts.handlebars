@@ -1,1 +1,15 @@
-<h1>Contacts Template</h1>
+<section id="contacts">
+
+
+
+{{#each contacts}}
+<div class="card shadow">
+<h2>{{this.name}}</h2>
+<h5>{{this.role}}</h5>
+<h5>{{this.phone}}</h5>
+<h5>{{this.email}}</h5>
+{{else}}
+  <p>You havent added any contacts</p>
+  {{/each}}
+</div>
+</section>
