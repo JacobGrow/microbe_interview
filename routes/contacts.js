@@ -79,5 +79,22 @@ router.delete('/delete/:id', (req, res) => {
   .catch(err => console.log(err))
 });
 
+//Update
+router.put('/edit/:id', (req, res) => {
+  Contact.update({
+    name: req.body.name,
+    role: req.body.role,
+    phone: req.body.phone,
+    email: req.body.email
+  },
+  {
+    where: {
+      id: req.params.id
+    }
+  })
+  .then(() => res.send("success"))
+  .catch(err => console.log(err));
+})
+
 
 module.exports = router;
