@@ -22,21 +22,6 @@ Contact.findOne({
 .catch(err => console.log(err)));
 
 
-// Create
-
-// router.post('/add', (req, res) => {
-//   let {name, role, email, phone } = req.body;
-//   Contact.create({
-//     name: name,
-//     role: role,
-//     email: email,
-//     phone: phone
-//   })
-//   .then(contacts => {
-//     res.redirect('/contacts')
-//   })
-//   .catch(err => console.log(err))
-// })
 router.post('/add', (req, res) => {
 
 let { name, role, email, phone } = req.body
@@ -81,5 +66,18 @@ else{
 }
 
 });
+
+//Delete
+router.delete('/delete/:id', (req, res) => {
+  Contact.destroy({
+    where: {
+      id: req.params.id
+    }
+  })
+ 
+  .then(() => res.send("Successfully deleted."))
+  .catch(err => console.log(err))
+});
+
 
 module.exports = router;

@@ -3,11 +3,21 @@
 
 
 {{#each contacts}}
+
+
 <div class="card shadow">
 <h2>{{this.name}}</h2>
 <h5>{{this.role}}</h5>
 <h5>{{this.phone}}</h5>
 <h5>{{this.email}}</h5>
+<div class="row">
+  <div class="col">
+<i class="fa fa-trash fa-lg mb-2" aria-hidden="true"></i>
+  </div>
+  <div class="col">
+<i class="fa fa-pencil fa-lg" aria-hidden="true"></i>
+  </div>
+</div>
 {{else}}
   <p>You havent added any contacts</p>
   {{/each}}
