@@ -44,12 +44,23 @@ if(!name){
 if(!role){
   errors.push({ text: 'Please add a role'});
 }
-if(!email){
-  errors.push({ text: 'Please add a email'});
+if(!email || !email.includes('@')){
+  errors.push({ text: 'Please add a valid email'});
 }
-if(!phone){
-  errors.push({ text: 'Please add a phone number'});
+
+if(!phone || phone.length != 12){{
+  errors.push({ text: 'Please add a phone number with format: 659-568-1234'});
 }
+if(phone && phone.length == 12){
+for(var i=0; i<=phone.length; i++){
+      if(phone.length[3] != '-' && phone.length[7] != '-'){
+        errors.push({ text: 'Please add a phone number with format: 659-568-1234'});
+        break;
+      }
+    }
+  }
+}
+
 
 // Error Check
 if(errors.length > 0){
@@ -62,6 +73,7 @@ if(errors.length > 0){
   });
 
 }
+
 else{
   //Insert into table
   Contact.create({
