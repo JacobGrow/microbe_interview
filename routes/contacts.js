@@ -48,18 +48,20 @@ if(!email || !email.includes('@')){
   errors.push({ text: 'Please add a valid email'});
 }
 
-if(!phone || phone.length != 12){{
+if(!phone || phone.length != 12){
   errors.push({ text: 'Please add a phone number with format: 659-568-1234'});
 }
+
 if(phone && phone.length == 12){
 for(var i=0; i<=phone.length; i++){
-      if(phone.length[3] != '-' && phone.length[7] != '-'){
+      if(phone[3] != '-' && phone[7] != '-'){
         errors.push({ text: 'Please add a phone number with format: 659-568-1234'});
         break;
       }
     }
   }
-}
+
+
 
 
 // Error Check
